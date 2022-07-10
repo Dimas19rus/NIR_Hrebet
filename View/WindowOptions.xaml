@@ -1,0 +1,91 @@
+﻿<Window x:Class="View.WindowOptions"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:View"
+        mc:Ignorable="d"
+        Title="Настройки" Height="400" Width="350">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Content="Настройки" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+
+
+
+        <GroupBox Header="Рабочая поверхность" HorizontalAlignment="Left"  Margin="5,40,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" >
+            <Grid   Margin="0,0,0,0"  VerticalAlignment="Top" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Длина, мм (X)" Grid.Column="0" Grid.Row="0"  Margin="5,5,0,0" HorizontalAlignment="Left"   VerticalAlignment="Top" />
+                <TextBox x:Name="TextBoxWidth"  Text="{Binding Path=Width}" Grid.Column="1" Grid.Row="0"  Height="18" MinWidth="50" Margin="5.45,5,4.55,0" TextWrapping="Wrap"  VerticalAlignment="Top" />
+
+                <TextBlock Text="Ширина, мм (Y)" Grid.Column="0" Grid.Row="1"  Margin="5,5,0,0" HorizontalAlignment="Left"  VerticalAlignment="Top" />
+                <TextBox x:Name="TextBoxHeight" Text="{Binding Path=Height}" Grid.Column="1" Grid.Row="1"  Height="18" MinWidth="50" Margin="5.45,5,4.55,0" TextWrapping="Wrap"  VerticalAlignment="Top" />
+
+                <TextBlock Text="Интревал между штырями, мм" Grid.Column="0" Grid.Row="2"  Margin="5,5,0,0" HorizontalAlignment="Left"   VerticalAlignment="Top" />
+                <TextBox x:Name="TextBoxIntervalPin" Text="{Binding Path=IntervalPin}" Grid.Column="1" Grid.Row="2"  Height="18"  MinWidth="50" Margin="5.45,5,4.55,0" TextWrapping="Wrap"  VerticalAlignment="Top"  />
+
+                <TextBlock Text="Max высота линейного привода, мм" Grid.Column="0" Grid.Row="3"  Margin="5,5,0,0" HorizontalAlignment="Left"   VerticalAlignment="Top" />
+                <TextBox x:Name="TextBoxLengthHead" Text="{Binding Path=LengthHead}" Grid.Column="1" Grid.Row="3"  Height="18"  MinWidth="50" Margin="5.45,5,4.55,0" TextWrapping="Wrap"  VerticalAlignment="Top"  />
+                
+                
+                
+                <Grid Grid.ColumnSpan="2" Grid.Row="4" >
+                    <Button x:Name="ButtonCheck" Content="Проверить" Margin="5,3,5,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="70"  Click="ButtonCheck_Click" />
+                    <TextBlock x:Name="TextBlockStatus" Text="#статус#" HorizontalAlignment="Left" Margin="80,5,0,0" VerticalAlignment="Top" />
+                    <TextBlock Text="Кол-во штырей" HorizontalAlignment="Left" Margin="150,5,0,0" VerticalAlignment="Top" />
+                    <TextBlock x:Name="TextBlockCountPin" Text="#####" HorizontalAlignment="Left" Margin="250,5,10,0" VerticalAlignment="Top" />
+                </Grid>
+
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="Соотношения с приложением DrufelCNC" HorizontalAlignment="Left"  Margin="5,200,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" >
+            <Grid   Margin="0,0,0,0"  VerticalAlignment="Top" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0" Grid.Row="0"  Text="XY" HorizontalAlignment="Left"  Margin="5,5,0,0" VerticalAlignment="Top"    />
+                <TextBlock Grid.Column="1" Grid.Row="0"  Text="1 координатная ед. =" HorizontalAlignment="Left"  Margin="5,5,0,0" VerticalAlignment="Top"    />
+                <TextBox x:Name="TextBoxRatioXY" Text="{Binding Path=RatioXY}" Grid.Column="2" Grid.Row="0"  Height="18" Margin="5.45,5,4.55,0" TextWrapping="Wrap"  MinWidth="50" VerticalAlignment="Top" />
+                <TextBlock Grid.Column="3" Grid.Row="0" Text="мм" HorizontalAlignment="Left"  Margin="5.45,5,0,0" VerticalAlignment="Top" />
+
+                <TextBlock Grid.Column="0" Grid.Row="1"  Text="Z" HorizontalAlignment="Left"  Margin="5,5,0,0" VerticalAlignment="Top"    />
+                <TextBlock Grid.Column="1" Grid.Row="1"  Text="1 координатная ед. =" HorizontalAlignment="Left"  Margin="5,5,0,0" VerticalAlignment="Top"    />
+                <TextBox x:Name="TextBoxRatioZ" Text="{Binding Path=RatioZ}" Grid.Column="2" Grid.Row="1"  Height="18" Margin="5.45,5,4.55,0" TextWrapping="Wrap" MinWidth="50" VerticalAlignment="Top" />
+                <TextBlock Grid.Column="3" Grid.Row="1" Text="мм" HorizontalAlignment="Left"  Margin="5.45,5,0,0" VerticalAlignment="Top" />
+
+                <TextBlock Grid.Column="0" Grid.Row="2"  Text="Угол Alfa" HorizontalAlignment="Left"  Margin="5,5,0,0" VerticalAlignment="Top"    />
+                <TextBlock Grid.Column="1" Grid.Row="2" Text="1 координатная ед. =" HorizontalAlignment="Left"  Margin="5,5,0,0" VerticalAlignment="Top" />
+                <TextBox x:Name="TextBoxRatioAlfd" Text="{Binding Path=RatioAlfd}" Grid.Column="2" Grid.Row="2"  Height="18" Margin="5.45,5,4.55,0" TextWrapping="Wrap" MinWidth="50" VerticalAlignment="Top"  />
+                <TextBlock Grid.Column="3" Grid.Row="2" Text="°" HorizontalAlignment="Left"  Margin="5.45,5,0,0" VerticalAlignment="Top" />
+
+
+            </Grid>
+
+        </GroupBox>
+        <Button x:Name="ButtonApply" Content="Применить" Grid.Column="0" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" Width="75" Click="ButtonApply_Click"/>
+        <Button x:Name="ButtonClose" Content="Отмена" Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="75" Click="ButtonClose_Click"/>
+    </Grid>
+</Window>
